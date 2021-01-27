@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.bbsapp.Bean.User;
 import com.example.bbsapp.MainActivity;
 import com.example.bbsapp.R;
 
@@ -13,6 +14,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import cn.bmob.v3.Bmob;
+import cn.bmob.v3.BmobUser;
 
 public class Splash extends AppCompatActivity {
     @Override
@@ -29,7 +31,13 @@ public class Splash extends AppCompatActivity {
     TimerTask timerTask = new TimerTask() {
         @Override
         public void run() {
-            startActivity(new Intent(Splash.this, MainActivity.class));
+            //startActivity(new Intent(Splash.this, MainActivity.class));
+            User user = User.getCurrentUser(User.class);
+            if(user != null){
+                startActivity(new Intent(Splash.this, MainActivity.class));
+            }else{
+                startActivity(new Intent(Splash.this, Login.class));
+            }
         }
     };
 
