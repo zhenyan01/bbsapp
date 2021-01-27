@@ -12,6 +12,8 @@ import com.example.bbsapp.R;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import cn.bmob.v3.Bmob;
+
 public class Splash extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -20,6 +22,8 @@ public class Splash extends AppCompatActivity {
 
         Timer timer = new Timer();
         timer.schedule(timerTask, 2000);
+
+        Bmob.initialize(this, "491577816863ab34446202c63e40ad0a");
     }
 
     TimerTask timerTask = new TimerTask() {
