@@ -26,14 +26,14 @@
             android:textStyle="bold"
             android:textColor="#000"
             android:textSize="22sp"
-            android:text="Email: "
+            android:text="Username: "
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <EditText
-            android:id="@+id/userEmail"
+            android:id="@+id/username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Type User Email"/>
+            android:hint="Type Username"/>
         </LinearLayout>
 
     <LinearLayout
@@ -67,4 +67,14 @@
         android:text="Login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/signUpButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="#5EBD67"
+        android:text="Sign Up"
+        android:textSize="20sp" />
+
 </LinearLayout>

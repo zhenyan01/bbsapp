@@ -38,6 +38,7 @@
 
         <activity android:name=".MainActivity" />
         <activity android:name=".activity.Login" />
+        <activity android:name=".activity.SignUp" />
 
     </application>
 

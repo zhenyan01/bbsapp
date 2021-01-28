@@ -18,21 +18,22 @@ import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
 
 public class Login extends AppCompatActivity {
-    private EditText userEmail, password;
-    private Button loginButton;
+    private EditText username, password;
+    private Button loginButton, signUpButton;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        userEmail = findViewById(R.id.userEmail);
+        username = findViewById(R.id.username);
         password = findViewById(R.id.password);
         loginButton = findViewById(R.id.loginButton);
+        signUpButton = findViewById(R.id.signUpButton);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                User user = new User();
-                user.setUsername(userEmail.getText().toString().trim());
+                final User user = new User();
+                user.setUsername(username.getText().toString().trim());
                 user.setPassword(password.getText().toString().trim());
 
                 user.login(new SaveListener<User>() {
@@ -46,6 +47,13 @@ public class Login extends AppCompatActivity {
                         }
                     }
                 });
+            }
+        });
+
+        signUpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Login.this, SignUp.class));
             }
         });
     }
