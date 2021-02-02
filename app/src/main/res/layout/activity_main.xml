@@ -8,27 +8,17 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <TextView
-        android:textSize="30sp"
-        android:gravity="center"
-        android:text="main"
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
-    <TextView
-        android:textSize="30sp"
-        android:id="@+id/username"
-        android:text="Loading..."
+
+    <com.ashokvarma.bottomnavigation.BottomNavigationBar
+        android:id="@+id/bottomNavigationBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
-
-    <TextView
-        android:textSize="30sp"
-        android:id="@+id/nickname"
-        android:text="Loading..."
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
 
 
 
