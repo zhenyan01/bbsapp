@@ -45,4 +45,5 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.5'
 
     implementation 'com.ashokvarma.android:bottom-navigation-bar:2.2.0'
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
 }
