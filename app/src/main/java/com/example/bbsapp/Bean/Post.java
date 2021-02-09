@@ -5,7 +5,20 @@ import cn.bmob.v3.BmobObject;
 public class Post extends BmobObject {
 
     private User author;
-    private String title, content, nickname;
+    private String title;
+    private String content;
+    private String nickname;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    private String name;
+
 
     public User getAuthor() {
         return author;

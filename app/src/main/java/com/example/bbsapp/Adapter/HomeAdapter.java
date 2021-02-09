@@ -66,6 +66,7 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }else{
             final RecyclerViewHolder recyclerViewHolder = (RecyclerViewHolder) holder;
             Post post = postList.get(position);
+            recyclerViewHolder.username.setText(post.getName());
             recyclerViewHolder.nickname.setText(post.getNickname());
             recyclerViewHolder.content.setText(post.getContent());
             recyclerViewHolder.time.setText(post.getCreatedAt());
@@ -76,7 +77,11 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     int position = recyclerViewHolder.getAdapterPosition();
                     if(User.getCurrentUser(User.class) != null){
                         Intent intent = new Intent(context, Receive.class);
-                        intent.putExtra("id", postList.get(position).getObjectId());
+                        intent.putExtra("id", post.getObjectId());
+                        intent.putExtra("username", post.getName());
+                        intent.putExtra("content", post.getContent());
+                        intent.putExtra("time", post.getCreatedAt());
+                        intent.putExtra("nickname", post.getNickname());
                         context.startActivity(intent);
                     }else{
                         Toast.makeText(context, "fetch user data failed", Toast.LENGTH_SHORT).show();
@@ -105,12 +110,13 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private class RecyclerViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView nickname, content, time;
+        public TextView username, nickname, content, time;
         public TextView footer;
 
         public RecyclerViewHolder(View view, int viewType) {
             super(view);
             if(viewType  == P_TYPE){
+                username = view.findViewById(R.id.username);
                 nickname = view.findViewById(R.id.nickname);
                 content = view.findViewById(R.id.content);
                 time = view.findViewById(R.id.time);

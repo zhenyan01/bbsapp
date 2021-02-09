@@ -16,6 +16,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.bbsapp.Adapter.HomeAdapter;
 import com.example.bbsapp.Bean.Post;
+import com.example.bbsapp.Bean.User;
 import com.example.bbsapp.R;
 
 import org.w3c.dom.Text;
@@ -31,7 +32,7 @@ public class FragmentHome extends Fragment {
 
     private RecyclerView recyclerView;
     private SwipeRefreshLayout swipeRefreshLayout;
-    //private TextView homeGreeting;
+    private TextView nickname;
     private HomeAdapter homeAdapter;
     List<Post> postList;
 
@@ -49,7 +50,7 @@ public class FragmentHome extends Fragment {
 
         Bmob.initialize(getActivity(), "491577816863ab34446202c63e40ad0a");
 
-        refresh();
+        //refresh();
 
         swipeRefreshLayout.setColorSchemeResources(android.R.color.holo_green_light,
                 android.R.color.holo_red_light,
@@ -60,6 +61,11 @@ public class FragmentHome extends Fragment {
                 refresh();
             }
         });
+
+        User user = User.getCurrentUser(User.class);
+        nickname.setText(user.getNickname());
+
+        refresh();
     }
 
     private void refresh() {
@@ -88,6 +94,7 @@ public class FragmentHome extends Fragment {
     private void initView() {
         recyclerView = getActivity().findViewById(R.id.recyclerView);
         swipeRefreshLayout = getActivity().findViewById(R.id.swipeRefreshLayout);
+        nickname = getActivity().findViewById(R.id.nickname);
         //homeGreeting = getActivity().findViewById(R.id.homeGreeting);
     }
 }
