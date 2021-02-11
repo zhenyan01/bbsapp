@@ -29,7 +29,7 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private final int P_TYPE = 0;
     private final int F_TYPE = 1;
 
-    private int maxPostCount = 15;
+    private int maxPostCount = 10;
     private boolean isFoot = true;
 
     public HomeAdapter(Context context, List<Post> postList){

@@ -27,6 +27,7 @@ import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
+import cn.bmob.v3.listener.QueryListener;
 
 public class FragmentHome extends Fragment {
 
@@ -62,10 +63,25 @@ public class FragmentHome extends Fragment {
             }
         });
 
-        User user = User.getCurrentUser(User.class);
-        nickname.setText(user.getNickname());
+        getUserInfo();
 
         refresh();
+    }
+
+    private void getUserInfo() {
+        User user = User.getCurrentUser(User.class);
+        String id = user.getObjectId();
+        BmobQuery<User> bmobQuery = new BmobQuery<>();
+        bmobQuery.getObject(id, new QueryListener<User>() {
+            @Override
+            public void done(User user, BmobException e) {
+                if(e == null){
+                    nickname.setText(user.getNickname());
+                }else{
+                    Toast.makeText(getActivity(), "fetch user data failed", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     private void refresh() {
