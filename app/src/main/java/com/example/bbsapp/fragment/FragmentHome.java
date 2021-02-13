@@ -93,14 +93,12 @@ public class FragmentHome extends Fragment {
             @Override
             public void done(List<Post> list, BmobException e) {
                 swipeRefreshLayout.setRefreshing(false);
-
                 if(e == null){
                     postList = list;
                     homeAdapter = new HomeAdapter(getActivity(), postList);
                     recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
                     recyclerView.setAdapter(homeAdapter);
                 }else{
-                    swipeRefreshLayout.setRefreshing(false);
                     Toast.makeText(getActivity(), "fetch data failed", Toast.LENGTH_SHORT).show();
                 }
             }

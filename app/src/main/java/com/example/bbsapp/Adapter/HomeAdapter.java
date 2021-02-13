@@ -74,7 +74,7 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             recyclerViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    int position = recyclerViewHolder.getAdapterPosition();
+                    //int position = recyclerViewHolder.getAdapterPosition();
                     if(User.getCurrentUser(User.class) != null){
                         Intent intent = new Intent(context, Receive.class);
                         intent.putExtra("id", post.getObjectId());
