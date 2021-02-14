@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.bbsapp.Bean.Community;
 import com.example.bbsapp.Bean.User;
 import com.example.bbsapp.R;
+import com.example.bbsapp.activity.CommunityIndex;
 import com.example.bbsapp.activity.Receive;
 
 import java.util.List;
@@ -75,8 +76,7 @@ public class CommunityAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             recyclerViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //change receive.class later
-                    Intent intent = new Intent(context, Receive.class);
+                    Intent intent = new Intent(context, CommunityIndex.class);
                     intent.putExtra("id", community.getObjectId());
                     intent.putExtra("c_name", community.getName());
                     intent.putExtra("c_owner", community.getOwner().getObjectId());

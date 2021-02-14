@@ -1,9 +1,11 @@
 package com.example.bbsapp.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +22,8 @@ import com.example.bbsapp.Bean.Community;
 import com.example.bbsapp.Bean.Post;
 import com.example.bbsapp.Bean.User;
 import com.example.bbsapp.R;
+import com.example.bbsapp.activity.CreateCommunity;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
@@ -34,6 +38,8 @@ public class FragmentBBS extends Fragment {
     private RecyclerView recyclerView;
     private SwipeRefreshLayout swipeRefreshLayout;
     private CommunityAdapter communityAdapter;
+    private FloatingActionButton floatingActionButtonAdd, floatingActionButtonCreate, floatingActionButtonSearch;
+    private PopupWindow popupWindow;
     List<Community> communityList;
 
     @Nullable
@@ -60,7 +66,27 @@ public class FragmentBBS extends Fragment {
             }
         });
 
-        //getUserInfo();
+        floatingActionButtonAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(floatingActionButtonSearch.getVisibility() == View.GONE) {
+                    floatingActionButtonAdd.setImageResource(R.drawable.addition_fill);
+                    floatingActionButtonCreate.setVisibility(View.VISIBLE);
+                    floatingActionButtonSearch.setVisibility(View.VISIBLE);
+                }else{
+                    floatingActionButtonAdd.setImageResource(R.drawable.addition);
+                    floatingActionButtonCreate.setVisibility(View.GONE);
+                    floatingActionButtonSearch.setVisibility(View.GONE);
+                }
+            }
+        });
+
+        floatingActionButtonCreate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), CreateCommunity.class));
+            }
+        });
 
         refresh();
     }
@@ -89,5 +115,8 @@ public class FragmentBBS extends Fragment {
     private void initView() {
         recyclerView = getActivity().findViewById(R.id.c_recyclerView);
         swipeRefreshLayout = getActivity().findViewById(R.id.c_swipeRefreshLayout);
+        floatingActionButtonAdd = getActivity().findViewById(R.id.bbs_floatingActionButton_addition);
+        floatingActionButtonCreate = getActivity().findViewById(R.id.bbs_floatingActionButton_create);
+        floatingActionButtonSearch = getActivity().findViewById(R.id.bbs_floatingActionButton_search);
     }
 }
