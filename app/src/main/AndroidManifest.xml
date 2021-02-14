@@ -43,6 +43,7 @@
         <activity android:name=".activity.CommunityIndex" />
         <activity android:name=".activity.CreateCommunity" />
         <activity android:name=".activity.CreatePost" />
+        <activity android:name=".activity.CreateReply" />
 
 
     </application>

@@ -74,8 +74,8 @@
             android:backgroundTint="@color/white"
             android:clickable="true"
             android:visibility="gone"
-            app:maxImageSize="45dp"
-            app:srcCompat="@drawable/edit" />
+            app:maxImageSize="35dp"
+            app:srcCompat="@drawable/add_community" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
 

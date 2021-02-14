@@ -17,6 +17,7 @@ import com.example.bbsapp.Bean.User;
 import com.example.bbsapp.R;
 import com.example.bbsapp.activity.Login;
 import com.example.bbsapp.activity.Receive;
+import com.google.gson.Gson;
 
 import java.util.List;
 import java.util.logging.LogRecord;
@@ -78,6 +79,9 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     //int position = recyclerViewHolder.getAdapterPosition();
                     if(User.getCurrentUser(User.class) != null){
                         Intent intent = new Intent(context, Receive.class);
+                        Gson gson = new Gson();
+                        String gsonPost = gson.toJson(post);
+                        intent.putExtra("gsonPost", gsonPost);
                         intent.putExtra("id", post.getObjectId());
                         intent.putExtra("username", post.getName());
                         intent.putExtra("content", post.getContent());

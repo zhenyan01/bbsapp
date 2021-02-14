@@ -20,6 +20,7 @@ import com.example.bbsapp.Bean.Community;
 import com.example.bbsapp.Bean.Post;
 import com.example.bbsapp.Bean.Reply;
 import com.example.bbsapp.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
@@ -37,7 +38,8 @@ public class Receive extends AppCompatActivity{
     private SwipeRefreshLayout swipeRefreshLayout;
     private ReplyAdapter replyAdapter;
     private Intent intent;
-    List<Reply> replyList;
+    private FloatingActionButton floatingActionButtonCreate;
+    private List<Reply> replyList;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -64,9 +66,22 @@ public class Receive extends AppCompatActivity{
             }
         });
 
+        floatingActionButtonCreate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent createReplyIntent = new Intent(Receive.this, CreateReply.class);
+                createReplyIntent.putExtra("gsonPost", intent.getStringExtra("gsonPost"));
+                startActivity(createReplyIntent);
+            }
+        });
+
         refresh();
+    }
 
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        refresh();
     }
 
     private void refresh() {
@@ -121,6 +136,7 @@ public class Receive extends AppCompatActivity{
         back = findViewById(R.id.back);
         recyclerView = findViewById(R.id.reply_recyclerView);
         swipeRefreshLayout = findViewById(R.id.reply_swipeRefreshLayout);
+        floatingActionButtonCreate = findViewById(R.id.ar_floatingActionButton);
         intent = getIntent();
     }
 }

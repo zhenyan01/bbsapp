@@ -95,6 +95,12 @@ public class CommunityIndex extends AppCompatActivity {
         refresh();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        refresh();
+    }
+
     private void refresh() {
         Community community = new Community();
         community.setObjectId(c_id);

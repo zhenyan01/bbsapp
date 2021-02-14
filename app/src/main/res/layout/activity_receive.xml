@@ -103,7 +103,7 @@
 
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/receive_floatingActionButton"
+            android:id="@+id/ar_floatingActionButton"
             android:layout_width="72dp"
             android:layout_height="72dp"
             android:layout_alignParentRight="true"

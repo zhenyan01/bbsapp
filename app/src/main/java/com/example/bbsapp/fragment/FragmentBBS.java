@@ -91,6 +91,11 @@ public class FragmentBBS extends Fragment {
         refresh();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        refresh();
+    }
 
     private void refresh() {
         BmobQuery<Community> communityBmobQuery = new BmobQuery<>();

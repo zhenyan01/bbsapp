@@ -3,6 +3,15 @@ package com.example.bbsapp.Bean;
 import cn.bmob.v3.BmobObject;
 
 public class Reply extends BmobObject {
+    public User getReplyUser() {
+        return replyUser;
+    }
+
+    public void setReplyUser(User replyUser) {
+        this.replyUser = replyUser;
+    }
+
+    private User replyUser;
     private String nickname;
 
     public Post getBelongsTo() {
