@@ -42,6 +42,8 @@
         <activity android:name=".activity.Receive" />
         <activity android:name=".activity.CommunityIndex" />
         <activity android:name=".activity.CreateCommunity" />
+        <activity android:name=".activity.CreatePost" />
+
 
     </application>
 

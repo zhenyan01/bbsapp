@@ -18,6 +18,7 @@ import com.example.bbsapp.Bean.User;
 import com.example.bbsapp.R;
 import com.example.bbsapp.activity.CommunityIndex;
 import com.example.bbsapp.activity.Receive;
+import com.google.gson.Gson;
 
 import java.util.List;
 
@@ -77,6 +78,9 @@ public class CommunityAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(context, CommunityIndex.class);
+                    Gson gson = new Gson();
+                    String gsonCommunity = gson.toJson(community);
+                    intent.putExtra("gsonCommunity", gsonCommunity);
                     intent.putExtra("id", community.getObjectId());
                     intent.putExtra("c_name", community.getName());
                     intent.putExtra("c_owner", community.getOwner().getObjectId());

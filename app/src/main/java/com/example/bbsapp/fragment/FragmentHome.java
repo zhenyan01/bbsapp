@@ -106,9 +106,9 @@ public class FragmentHome extends Fragment {
     }
 
     private void initView() {
-        recyclerView = getActivity().findViewById(R.id.recyclerView);
-        swipeRefreshLayout = getActivity().findViewById(R.id.swipeRefreshLayout);
-        nickname = getActivity().findViewById(R.id.nickname);
+        recyclerView = getActivity().findViewById(R.id.home_recyclerView);
+        swipeRefreshLayout = getActivity().findViewById(R.id.home_swipeRefreshLayout);
+        nickname = getActivity().findViewById(R.id.home_nickname);
         //homeGreeting = getActivity().findViewById(R.id.homeGreeting);
     }
 }

@@ -9,6 +9,16 @@ public class Post extends BmobObject {
     private String content;
     private String nickname;
 
+    public Community getBelongsTo() {
+        return belongsTo;
+    }
+
+    public void setBelongsTo(Community belongsTo) {
+        this.belongsTo = belongsTo;
+    }
+
+    private Community belongsTo;
+
     public String getName() {
         return name;
     }

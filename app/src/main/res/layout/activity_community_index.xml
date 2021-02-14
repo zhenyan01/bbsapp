@@ -79,7 +79,7 @@
 
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/ci_floatingActionButton"
+            android:id="@+id/aci_floatingActionButton_addition"
             android:layout_width="72dp"
             android:layout_height="72dp"
             android:layout_alignParentRight="true"
@@ -90,6 +90,36 @@
             android:clickable="true"
             app:maxImageSize="72dp"
             app:srcCompat="@drawable/addition" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+
+            android:id="@+id/aci_floatingActionButton_create"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="25dp"
+            android:layout_marginBottom="85dp"
+            android:backgroundTint="@color/white"
+            android:clickable="true"
+            android:visibility="gone"
+            app:maxImageSize="45dp"
+            app:srcCompat="@drawable/edit" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+
+            android:id="@+id/aci_floatingActionButton_search"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="25dp"
+            android:layout_marginBottom="144dp"
+            android:backgroundTint="@color/white"
+            android:clickable="true"
+            app:maxImageSize="45dp"
+            android:visibility="gone"
+            app:srcCompat="@drawable/search" />
 
     </RelativeLayout>
 

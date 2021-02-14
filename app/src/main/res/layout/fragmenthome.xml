@@ -36,7 +36,7 @@
             android:textStyle="bold"/>
 
         <TextView
-            android:id="@+id/nickname"
+            android:id="@+id/home_nickname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="loading..."
@@ -53,11 +53,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:id="@+id/swipeRefreshLayout"
+            android:id="@+id/home_swipeRefreshLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
+                android:id="@+id/home_recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 

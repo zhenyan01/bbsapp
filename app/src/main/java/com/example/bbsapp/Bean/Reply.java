@@ -3,7 +3,17 @@ package com.example.bbsapp.Bean;
 import cn.bmob.v3.BmobObject;
 
 public class Reply extends BmobObject {
-    String nickname;
+    private String nickname;
+
+    public Post getBelongsTo() {
+        return belongsTo;
+    }
+
+    public void setBelongsTo(Post belongsTo) {
+        this.belongsTo = belongsTo;
+    }
+
+    private Post belongsTo;
 
     public String getNickname() {
         return nickname;
@@ -21,5 +31,5 @@ public class Reply extends BmobObject {
         this.content = content;
     }
 
-    String content;
+    private String content;
 }

@@ -21,6 +21,7 @@ import com.example.bbsapp.Bean.Post;
 import com.example.bbsapp.Bean.Reply;
 import com.example.bbsapp.Bean.User;
 import com.example.bbsapp.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
@@ -37,6 +38,8 @@ public class CommunityIndex extends AppCompatActivity {
     private TextView c_name;
     private CommunityIndexAdapter communityIndexAdapter;
     private ImageView back;
+    private FloatingActionButton floatingActionButtonAdd, floatingActionButtonCreate, floatingActionButtonSearch;
+    private String c_id;
     Intent intent;
     List<Post> postList;
 
@@ -64,30 +67,37 @@ public class CommunityIndex extends AppCompatActivity {
             }
         });
 
-        getCommunityInfo();
+        floatingActionButtonAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(floatingActionButtonSearch.getVisibility() == View.GONE) {
+                    floatingActionButtonAdd.setImageResource(R.drawable.addition_fill);
+                    floatingActionButtonCreate.setVisibility(View.VISIBLE);
+                    floatingActionButtonSearch.setVisibility(View.VISIBLE);
+                }else{
+                    floatingActionButtonAdd.setImageResource(R.drawable.addition);
+                    floatingActionButtonCreate.setVisibility(View.GONE);
+                    floatingActionButtonSearch.setVisibility(View.GONE);
+                }
+            }
+        });
+
+        floatingActionButtonCreate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent createPostIntent = new Intent(CommunityIndex.this, CreatePost.class);
+                createPostIntent.putExtra("gsonCommunity", intent.getStringExtra("gsonCommunity"));
+                createPostIntent.putExtra("c_id", c_id);
+                startActivity(createPostIntent);
+            }
+        });
 
         refresh();
     }
 
-    private void getCommunityInfo() {
-        String id = intent.getStringExtra("id");
-        BmobQuery<Community> bmobQuery = new BmobQuery<>();
-        bmobQuery.getObject(id, new QueryListener<Community>() {
-            @Override
-            public void done(Community community, BmobException e) {
-                if(e == null){
-                    c_name.setText(community.getName());
-                }else{
-                    Toast.makeText(CommunityIndex.this, "fetch user data failed", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-    }
-
     private void refresh() {
-        intent = getIntent();
         Community community = new Community();
-        community.setObjectId(intent.getStringExtra("id"));
+        community.setObjectId(c_id);
         BmobQuery<Post> postBmobQuery = new BmobQuery<>();
         postBmobQuery.addWhereEqualTo("belongsTo",new BmobPointer(community));
         postBmobQuery.setLimit(999);
@@ -114,7 +124,12 @@ public class CommunityIndex extends AppCompatActivity {
         swipeRefreshLayout = findViewById(R.id.ci_swipeRefreshLayout);
         c_name = findViewById(R.id.community_name_for_greeting);
         intent = getIntent();
+        c_name.setText(intent.getStringExtra("c_name"));
+        c_id = intent.getStringExtra("id");
         back = findViewById(R.id.aci_back);
+        floatingActionButtonAdd = findViewById(R.id.aci_floatingActionButton_addition);
+        floatingActionButtonCreate = findViewById(R.id.aci_floatingActionButton_create);
+        floatingActionButtonSearch = findViewById(R.id.aci_floatingActionButton_search);
         //homeGreeting = getActivity().findViewById(R.id.homeGreeting);
     }
 }
