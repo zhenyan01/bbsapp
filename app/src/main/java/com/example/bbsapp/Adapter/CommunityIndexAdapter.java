@@ -64,6 +64,7 @@ public class CommunityIndexAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         }else{
             final CommunityIndexAdapter.RecyclerViewHolder recyclerViewHolder = (CommunityIndexAdapter.RecyclerViewHolder) holder;
             Post post = postList.get(position);
+            recyclerViewHolder.title.setText(post.getTitle());
             recyclerViewHolder.nickname.setText(post.getNickname());
             recyclerViewHolder.content.setText(post.getContent());
             recyclerViewHolder.time.setText(post.getCreatedAt());
@@ -107,12 +108,13 @@ public class CommunityIndexAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
     private class RecyclerViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView nickname, content, time;
+        public TextView nickname, content, time, title;
         public TextView footer;
 
         public RecyclerViewHolder(View view, int viewType) {
             super(view);
             if(viewType  == P_TYPE){
+                title = view.findViewById(R.id.pi_post_title);
                 nickname = view.findViewById(R.id.pi_author_nickname);
                 content = view.findViewById(R.id.pi_post_content);
                 time = view.findViewById(R.id.pi_post_time);

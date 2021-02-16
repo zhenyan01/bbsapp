@@ -5,61 +5,157 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <LinearLayout
+        android:layout_marginTop="5dp"
         android:layout_weight="1"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="0dp">
 
-        <LinearLayout
-            android:orientation="horizontal"
+        <RelativeLayout
+            android:layout_margin="1dp"
+            android:background="@drawable/profile_shape1"
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <ImageView
+                android:id="@+id/fp_user_pic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="25dp"
+                android:layout_marginBottom="25dp"
+                android:src="@drawable/default_user_pic" />
+
             <TextView
+                android:layout_toRightOf="@+id/fp_user_pic"
                 android:textColor="@color/black"
+                android:layout_marginTop="40dp"
+                android:textSize="25dp"
                 android:textStyle="bold"
-                android:layout_marginTop="15dp"
-                android:layout_marginLeft="15dp"
-                android:textSize="25sp"
-                android:text="User: "
+                android:id="@+id/fp_nickname"
+                android:text="loading nickname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
-            <TextView
-                android:textColor="@color/black"
-                android:layout_marginTop="15dp"
-                android:textSize="25sp"
-                android:id="@+id/username"
-                android:text="username"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
+            <ImageView
 
-        <LinearLayout
-            android:orientation="horizontal"
+                android:src="@drawable/right_arrow"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="38dp"
+                android:id="@+id/fp_user_profile_enter"
+                android:background="?android:attr/selectableItemBackground"
+                android:layout_width="40dp"
+                android:layout_height="40dp"/>
+        </RelativeLayout>
+
+        <View
+            android:layout_marginTop="5dp"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="#c9c9c9" />
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
+            <ImageView
+                android:layout_margin="10dp"
+                android:id="@+id/fp_my_post_icon"
+                android:src="@drawable/my_post"
+                android:layout_width="40dp"
+                android:layout_height="40dp"/>
             <TextView
-                android:textColor="@color/black"
-                android:textStyle="bold"
+                android:layout_toRightOf="@id/fp_my_post_icon"
                 android:layout_marginTop="15dp"
-                android:layout_marginLeft="15dp"
-                android:textSize="22dp"
-                android:text="Nickname: "
+                android:textSize="20sp"
+                android:text="My Post"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
-
-            <TextView
-                android:textColor="@color/black"
+            <ImageView
+                android:layout_marginRight="5dp"
+                android:id="@+id/fp_enter_my_post"
                 android:layout_marginTop="15dp"
-                android:textSize="22dp"
-                android:id="@+id/nickname"
-                android:text="nickname"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/right_arrow"
+                android:layout_width="30dp"
+                android:layout_height="30dp"/>
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="#c9c9c9" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_margin="10dp"
+                android:id="@+id/fp_my_community_icon"
+                android:src="@drawable/my_community"
+                android:layout_width="40dp"
+                android:layout_height="40dp"/>
+            <TextView
+                android:layout_toRightOf="@id/fp_my_community_icon"
+                android:layout_marginTop="15dp"
+                android:textSize="20sp"
+                android:text="My Community"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
-        </LinearLayout>
+            <ImageView
+                android:id="@+id/fp_enter_my_community"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="15dp"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/right_arrow"
+                android:layout_width="30dp"
+                android:layout_height="30dp"/>
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="#c9c9c9" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_margin="10dp"
+                android:id="@+id/fp_my_collection_icon"
+                android:src="@drawable/my_collection"
+                android:layout_width="40dp"
+                android:layout_height="40dp"/>
+            <TextView
+                android:layout_toRightOf="@id/fp_my_collection_icon"
+                android:layout_marginTop="15dp"
+                android:textSize="20sp"
+                android:text="My Community"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <ImageView
+                android:id="@+id/fp_enter_my_collection"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="15dp"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/right_arrow"
+                android:layout_width="30dp"
+                android:layout_height="30dp"/>
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="#c9c9c9" />
+
+
+
     </LinearLayout>
 
     <Button

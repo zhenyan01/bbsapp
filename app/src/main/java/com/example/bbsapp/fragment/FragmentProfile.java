@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,7 +24,7 @@ import cn.bmob.v3.listener.QueryListener;
 
 public class FragmentProfile extends Fragment {
 
-    private TextView nickname, username;
+    private TextView nickname;
     private Button logout;
 
     @Nullable
@@ -58,7 +59,6 @@ public class FragmentProfile extends Fragment {
             public void done(User user, BmobException e) {
                 if(e == null){
                     nickname.setText(user.getNickname());
-                    username.setText(user.getUsername());
                 }else{
                     Toast.makeText(getActivity(), "fetch user data failed", Toast.LENGTH_SHORT).show();
                 }
@@ -67,8 +67,7 @@ public class FragmentProfile extends Fragment {
     }
 
     private void initView() {
-        nickname = getActivity().findViewById(R.id.nickname);
-        username = getActivity().findViewById(R.id.username);
+        nickname = getActivity().findViewById(R.id.fp_nickname);
         logout = getActivity().findViewById(R.id.logout);
     }
 }

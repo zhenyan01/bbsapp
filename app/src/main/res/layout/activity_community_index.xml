@@ -104,7 +104,7 @@
             android:clickable="true"
             android:visibility="gone"
             app:maxImageSize="45dp"
-            app:srcCompat="@drawable/edit" />
+            app:srcCompat="@drawable/add_post" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
 

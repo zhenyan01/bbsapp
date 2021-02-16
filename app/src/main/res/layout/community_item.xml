@@ -36,6 +36,8 @@
             android:textSize="15sp"
             android:layout_marginRight="15dp"
             android:text="Info"
+            android:singleLine="true"
+            android:ellipsize="end"
             android:layout_toLeftOf="@+id/owner_title"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"/>
