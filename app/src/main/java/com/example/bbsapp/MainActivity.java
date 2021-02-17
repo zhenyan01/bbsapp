@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationBar.OnTabSelectedListener, ViewPager.OnPageChangeListener {
-
+    //comment
     //private TextView username, nickname;
     private ViewPager viewPager;
     private BottomNavigationBar bottomNavigationBar;
