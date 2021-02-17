@@ -11,7 +11,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bbsapp.Bean.User;
-import com.example.bbsapp.MainActivity;
 import com.example.bbsapp.R;
 
 import cn.bmob.v3.exception.BmobException;
