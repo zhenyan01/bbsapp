@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
 
         viewPager = findViewById(R.id.viewPager);
         bottomNavigationBar = findViewById(R.id.bottomNavigationBar);
-
+        ///////brandenew
         initView();
 
         /*username = findViewById(R.id.username);
