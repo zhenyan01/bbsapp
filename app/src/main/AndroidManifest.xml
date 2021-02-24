@@ -39,6 +39,7 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".activity.Login" />
         <activity android:name=".activity.SignUp" />
+        <activity android:name=".activity.Switch" />
         <activity android:name=".activity.Receive" />
         <activity android:name=".activity.CommunityIndex" />
         <activity android:name=".activity.CreateCommunity" />

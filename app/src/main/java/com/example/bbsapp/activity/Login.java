@@ -2,6 +2,7 @@ package com.example.bbsapp.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -40,8 +41,11 @@ public class Login extends AppCompatActivity {
                     @Override
                     public void done(User user, BmobException e) {
                         if(e == null) {
+                            // 02-24-2021
                             Toast.makeText(Login.this, "Login success", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(Login.this, MainActivity.class));
+                            //startActivity(new Intent(Login.this, MainActivity.class));
+                            Log.i("I/info","Before start?");
+                            startActivity(new Intent(Login.this, Switch.class));
                         }else{
                             Toast.makeText(Login.this, "Login failed", Toast.LENGTH_SHORT).show();
                         }
