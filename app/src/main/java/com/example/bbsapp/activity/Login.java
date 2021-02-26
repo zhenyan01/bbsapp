@@ -29,7 +29,7 @@ public class Login extends AppCompatActivity {
         password = findViewById(R.id.password);
         loginButton = findViewById(R.id.loginButton);
         signUpButton = findViewById(R.id.signUpButton);
-
+        Log.i("info","onCreate in Login triggered");
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,5 +61,6 @@ public class Login extends AppCompatActivity {
             }
         });
     }
+
 
 }

@@ -55,7 +55,8 @@ public class SignUp extends AppCompatActivity {
                         public void done(User user, BmobException e) {
                             if(e == null) {
                                 Toast.makeText(SignUp.this, "Register success", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(SignUp.this, MainActivity.class));
+                                //----------------------------02-24-2021--------------------------------//
+                                startActivity(new Intent(SignUp.this, Questionnarie.class));
                             }else{
                                 Toast.makeText(SignUp.this, "Register failed", Toast.LENGTH_SHORT).show();
                             }
