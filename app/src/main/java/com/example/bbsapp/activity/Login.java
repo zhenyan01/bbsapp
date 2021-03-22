@@ -1,6 +1,7 @@
 package com.example.bbsapp.activity;
 
 import android.content.Intent;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -21,6 +22,7 @@ import cn.bmob.v3.listener.SaveListener;
 public class Login extends AppCompatActivity {
     private EditText username, password;
     private Button loginButton, signUpButton;
+    private String Tag = "Login";
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,5 +64,36 @@ public class Login extends AppCompatActivity {
         });
     }
 
+    // for testing
 
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.i(Tag,"onStart triggered");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.i(Tag,"onStop triggered");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.i(Tag,"onResume triggered");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.i(Tag,"onPause triggered");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.i(Tag,"onDestroy triggered");
+    }
 }

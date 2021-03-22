@@ -69,180 +69,543 @@ public class Questionnarie extends AppCompatActivity {
         Log.i("I/info", "tail of the activity");
     }
 
+    public void checkOption(){
+        if (index == 0 || index == 4 || index == 8 || index == 12 || index == 16) {
+            EORI++;
+
+        } else if (index == 1 || index == 5 || index == 9 || index == 13 || index == 17) {
+            SORN++;
+        } else if (index == 2 || index == 6 || index == 10 || index == 14 || index == 18) {
+            TORF++;
+        } else if (index == 3 || index == 7 || index == 11 || index == 15 || index == 19) {
+            JORP++;
+        }
+    }
+
     public void start(){
-        Log.i("I/info", "I'm passed the start!111");
+        //Log.i("I/info", "I'm passed the start!111");
         init();
-        Log.i("I/info", "I'm passed the start!");
+        //Log.i("I/info", "I'm passed the start!");
         goButton.setVisibility(View.INVISIBLE);
         // hide other widgets for a while
         ques_view.setVisibility(View.VISIBLE);
         optionA.setVisibility(View.VISIBLE);
         optionB.setVisibility(View.VISIBLE);
 
-        for(int i=0;i<19;i++) {
-            Log.i("I/info", "I'm in the loop");
-            ques_view.setText(questions.get(i));
-            optionA.setText(answerA.get(i));
-            optionB.setText(answerB.get(i));
+        //int i =0;
 
+        ques_view.setText(questions.get(0));
 
-                index = i;
-                A.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if (index == 0 || index == 4 || index == 8 || index == 12 || index == 16) {
-                            EORI++;
+        optionA.setText(answerA.get(0));
+        optionB.setText(answerB.get(0));
 
-                        } else if (index == 1 || index == 5 || index == 9 || index == 13 || index == 17) {
-                            SORN++;
-                        } else if (index == 2 || index == 6 || index == 10 || index == 14 || index == 18) {
-                            TORF++;
-                        } else if (index == 3 || index == 7 || index == 11 || index == 15 || index == 19) {
-                            JORP++;
-                        }
-                    }
-
-                });
-
-                B.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if (index == 0 || index == 4 || index == 8 || index == 12 || index == 16) {
-                            EORI--;
-                        } else if (index == 1 || index == 5 || index == 9 || index == 13 || index == 17) {
-                            SORN--;
-                        } else if (index == 2 || index == 6 || index == 10 || index == 14 || index == 18) {
-                            TORF--;
-                        } else if (index == 3 || index == 7 || index == 11 || index == 15 || index == 19) {
-                            JORP--;
-                        }
-                    }
-                });
-
-                //question2();
+        A.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkOption();
+                index++;
+                question2();
             }
-        result();
+
+        });
+
+        B.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkOption();
+                index++;
+                question2();
+            }
+        });
+
+//            Log.i("I/info", "I'm in the loop");
+//            ques_view.setText(questions.get(index));
+//
+//            optionA.setText(answerA.get(index));
+//            optionB.setText(answerB.get(index));
+
 
     }
-//    public void question2(){
-//        ques_view.setText(questions.get(1));
-//        optionA.setText(answerA.get(1));
-//        optionB.setText(answerB.get(1));
-//
-//        A.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if(index == 0 || index ==4 || index == 8 || index == 12 || index == 16){
-//                    EORI++;
-//
-//                }else if(index == 1 || index ==5 || index == 9 || index == 13 || index == 17){
-//                    SORN++;
-//                }else if(index == 2 || index ==6 || index == 10 || index == 14 || index == 18){
-//                    TORF++;
-//                }else if(index == 3 || index ==7 || index == 11 || index == 15 || index == 19){
-//                    JORP++;
-//                }
-//            }
-//
-//        });
-//
-//        B.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if(index == 0 || index ==4 || index == 8 || index == 12 || index == 16){
-//                    EORI--;
-//                }else if(index == 1 || index ==5 || index == 9 || index == 13 || index == 17){
-//                    SORN--;
-//                }else if(index == 2 || index ==6 || index == 10 || index == 14 || index == 18){
-//                    TORF--;
-//                }else if(index == 3 || index ==7 || index == 11 || index == 15 || index == 19){
-//                    JORP--;
-//                }
-//            }
-//        });
-//        index++;
-//        question3();
-//    }
-//
-//    public void question3(){
-//        ques_view.setText(questions.get(2));
-//        optionA.setText(answerA.get(2));
-//        optionB.setText(answerB.get(2));
-//
-//        A.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if(index == 0 || index ==4 || index == 8 || index == 12 || index == 16){
-//                    EORI++;
-//
-//                }else if(index == 1 || index ==5 || index == 9 || index == 13 || index == 17){
-//                    SORN++;
-//                }else if(index == 2 || index ==6 || index == 10 || index == 14 || index == 18){
-//                    TORF++;
-//                }else if(index == 3 || index ==7 || index == 11 || index == 15 || index == 19){
-//                    JORP++;
-//                }
-//            }
-//
-//        });
-//
-//        B.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if(index == 0 || index ==4 || index == 8 || index == 12 || index == 16){
-//                    EORI--;
-//                }else if(index == 1 || index ==5 || index == 9 || index == 13 || index == 17){
-//                    SORN--;
-//                }else if(index == 2 || index ==6 || index == 10 || index == 14 || index == 18){
-//                    TORF--;
-//                }else if(index == 3 || index ==7 || index == 11 || index == 15 || index == 19){
-//                    JORP--;
-//                }
-//            }
-//        });
-//        index++;
-//        question4();
-//    }
-//
-//    public void question4(){
-//        ques_view.setText(questions.get(3));
-//        optionA.setText(answerA.get(3));
-//        optionB.setText(answerB.get(3));
-//
-//        A.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if(index == 0 || index ==4 || index == 8 || index == 12 || index == 16){
-//                    EORI++;
-//
-//                }else if(index == 1 || index ==5 || index == 9 || index == 13 || index == 17){
-//                    SORN++;
-//                }else if(index == 2 || index ==6 || index == 10 || index == 14 || index == 18){
-//                    TORF++;
-//                }else if(index == 3 || index ==7 || index == 11 || index == 15 || index == 19){
-//                    JORP++;
-//                }
-//            }
-//
-//        });
-//
-//        B.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if(index == 0 || index ==4 || index == 8 || index == 12 || index == 16){
-//                    EORI--;
-//                }else if(index == 1 || index ==5 || index == 9 || index == 13 || index == 17){
-//                    SORN--;
-//                }else if(index == 2 || index ==6 || index == 10 || index == 14 || index == 18){
-//                    TORF--;
-//                }else if(index == 3 || index ==7 || index == 11 || index == 15 || index == 19){
-//                    JORP--;
-//                }
-//            }
-//        });
-//        index++;
-//        result();
-//    }
+    public void question2(){
+        ques_view.setText(questions.get(1));
+        optionA.setText(answerA.get(1));
+        optionB.setText(answerB.get(1));
+        A.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkOption();
+                index++;
+                question3();
+            }
+
+        });
+
+        B.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkOption();
+                index++;
+                question3();
+            }
+        });
+
+
+    }
+
+    public void question3(){
+        ques_view.setText(questions.get(2));
+        optionA.setText(answerA.get(2));
+        optionB.setText(answerB.get(2));
+
+        A.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkOption();
+                index++;
+                question4();
+            }
+
+        });
+
+        B.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkOption();
+                index++;
+                question4();
+            }
+        });
+
+    }
+
+    public void question4(){
+        ques_view.setText(questions.get(3));
+        optionA.setText(answerA.get(3));
+        optionB.setText(answerB.get(3));
+
+        A.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkOption();
+                index++;
+                question5();
+            }
+
+        });
+
+        B.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkOption();
+                index++;
+                question5();
+            }
+        });
+
+    }
+    public void question5(){
+        ques_view.setText(questions.get(4));
+        optionA.setText(answerA.get(4));
+        optionB.setText(answerB.get(4));
+
+        A.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkOption();
+                index++;
+                question6();
+            }
+
+        });
+
+        B.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkOption();
+                index++;
+                question6();
+            }
+        });
+
+    }
+    public void question6(){
+        ques_view.setText(questions.get(5));
+        optionA.setText(answerA.get(5));
+        optionB.setText(answerB.get(5));
+
+        A.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkOption();
+                index++;
+                question7();
+            }
+
+        });
+
+        B.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkOption();
+                index++;
+                question7();
+            }
+        });
+
+    }
+    public void question7(){
+        ques_view.setText(questions.get(6));
+        optionA.setText(answerA.get(6));
+        optionB.setText(answerB.get(6));
+
+        A.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkOption();
+                index++;
+                question8();
+            }
+
+        });
+
+        B.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkOption();
+                index++;
+                question8();
+            }
+        });
+
+    }
+    public void question8(){
+        ques_view.setText(questions.get(7));
+        optionA.setText(answerA.get(7));
+        optionB.setText(answerB.get(7));
+
+        A.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkOption();
+                index++;
+                question9();
+            }
+
+        });
+
+        B.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkOption();
+                index++;
+                question9();
+            }
+        });
+
+    }
+    public void question9(){
+        ques_view.setText(questions.get(8));
+        optionA.setText(answerA.get(8));
+        optionB.setText(answerB.get(8));
+
+        A.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkOption();
+                index++;
+                question10();
+            }
+
+        });
+
+        B.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkOption();
+                index++;
+                question10();
+            }
+        });
+
+    }
+    public void question10(){
+        ques_view.setText(questions.get(9));
+        optionA.setText(answerA.get(9));
+        optionB.setText(answerB.get(9));
+
+        A.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkOption();
+                index++;
+                question11();
+            }
+
+        });
+
+        B.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkOption();
+                index++;
+                question11();
+            }
+        });
+
+    }
+    public void question11(){
+        ques_view.setText(questions.get(10));
+        optionA.setText(answerA.get(10));
+        optionB.setText(answerB.get(10));
+
+        A.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkOption();
+                index++;
+                question12();
+            }
+
+        });
+
+        B.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkOption();
+                index++;
+                question12();
+            }
+        });
+
+    }
+    public void question12(){
+        ques_view.setText(questions.get(11));
+        optionA.setText(answerA.get(11));
+        optionB.setText(answerB.get(11));
+
+        A.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkOption();
+                index++;
+                question13();
+            }
+
+        });
+
+        B.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkOption();
+                index++;
+                question13();
+            }
+        });
+
+    }
+    public void question13(){
+        ques_view.setText(questions.get(12));
+        optionA.setText(answerA.get(12));
+        optionB.setText(answerB.get(12));
+
+        A.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkOption();
+                index++;
+                question14();
+            }
+
+        });
+
+        B.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkOption();
+                index++;
+                question14();
+            }
+        });
+
+    }
+    public void question14(){
+        ques_view.setText(questions.get(13));
+        optionA.setText(answerA.get(13));
+        optionB.setText(answerB.get(13));
+
+        A.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkOption();
+                index++;
+                question15();
+            }
+
+        });
+
+        B.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkOption();
+                index++;
+                question15();
+            }
+        });
+
+    }
+    public void question15(){
+        ques_view.setText(questions.get(14));
+        optionA.setText(answerA.get(14));
+        optionB.setText(answerB.get(14));
+
+        A.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkOption();
+                index++;
+                question16();
+            }
+
+        });
+
+        B.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkOption();
+                index++;
+                question16();
+            }
+        });
+
+    }
+    public void question16(){
+        ques_view.setText(questions.get(15));
+        optionA.setText(answerA.get(15));
+        optionB.setText(answerB.get(15));
+
+        A.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkOption();
+                index++;
+                question17();
+            }
+
+        });
+
+        B.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkOption();
+                index++;
+                question17();
+            }
+        });
+
+    }
+    public void question17(){
+        ques_view.setText(questions.get(16));
+        optionA.setText(answerA.get(16));
+        optionB.setText(answerB.get(16));
+
+        A.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkOption();
+                index++;
+                question18();
+            }
+
+        });
+
+        B.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkOption();
+                index++;
+                question18();
+            }
+        });
+
+    }
+    public void question18(){
+        ques_view.setText(questions.get(17));
+        optionA.setText(answerA.get(17));
+        optionB.setText(answerB.get(17));
+
+        A.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkOption();
+                index++;
+                question19();
+            }
+
+        });
+
+        B.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkOption();
+                index++;
+                question19();
+            }
+        });
+
+    }
+
+    public void question19(){
+        ques_view.setText(questions.get(18));
+        optionA.setText(answerA.get(18));
+        optionB.setText(answerB.get(18));
+
+        A.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkOption();
+                index++;
+                question20();
+            }
+
+        });
+
+        B.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkOption();
+                index++;
+                question20();
+            }
+        });
+
+    }
+
+    public void question20(){
+        ques_view.setText(questions.get(19));
+        optionA.setText(answerA.get(19));
+        optionB.setText(answerB.get(19));
+
+        A.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkOption();
+                index++;
+                result();
+            }
+
+        });
+
+        B.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkOption();
+                index++;
+                result();
+            }
+        });
+
+    }
+
 
 
 
