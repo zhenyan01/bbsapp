@@ -1,8 +1,14 @@
 package com.example.bbsapp.activity;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +17,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.example.bbsapp.MainActivity;
 import com.example.bbsapp.R;
@@ -19,9 +28,13 @@ import com.example.bbsapp.R;
 import java.util.ArrayList;
 
 public class Questionnarie extends AppCompatActivity {
+    LocationManager locationManager;
+    LocationListener locationListener;
+
     TextView ques_view;
     TextView optionA;
     TextView optionB;
+    TextView position;
 
     ArrayList<String> answerA = new ArrayList<>();
     ArrayList<String> answerB = new ArrayList<>();
@@ -39,6 +52,17 @@ public class Questionnarie extends AppCompatActivity {
     int JORP = 0;
     int index = 0;
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if(grantResults.length >0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+            if(ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
+                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,0,0,locationListener);
+                }
+            }
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +73,7 @@ public class Questionnarie extends AppCompatActivity {
         ques_view = findViewById(R.id.questionText);
         optionA = findViewById(R.id.answerA);
         optionB = findViewById(R.id.answerB);
+        position = findViewById(R.id.location);
         A = findViewById(R.id.buttonA);
         B = findViewById(R.id.buttonB);
         goButton = findViewById(R.id.goButton);
@@ -67,9 +92,26 @@ public class Questionnarie extends AppCompatActivity {
             }
         });
         Log.i("I/info", "tail of the activity");
+        // GPS using
+        locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+        locationListener = new LocationListener() {
+            @Override
+            public void onLocationChanged(@NonNull Location location) {
+                Log.i("Location", location.toString());
+                position.setText(location.toString());
+            }
+        };
+        // Permission verifying
+        if(ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},1);
+        }else{
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,0,0,locationListener);
+        }
+
+
     }
 
-    public void checkOption(){
+    public void checkOptionA(){
         if (index == 0 || index == 4 || index == 8 || index == 12 || index == 16) {
             EORI++;
 
@@ -79,6 +121,19 @@ public class Questionnarie extends AppCompatActivity {
             TORF++;
         } else if (index == 3 || index == 7 || index == 11 || index == 15 || index == 19) {
             JORP++;
+        }
+    }
+
+    public void checkOptionB(){
+        if (index == 0 || index == 4 || index == 8 || index == 12 || index == 16) {
+            EORI--;
+
+        } else if (index == 1 || index == 5 || index == 9 || index == 13 || index == 17) {
+            SORN--;
+        } else if (index == 2 || index == 6 || index == 10 || index == 14 || index == 18) {
+            TORF--;
+        } else if (index == 3 || index == 7 || index == 11 || index == 15 || index == 19) {
+            JORP--;
         }
     }
 
@@ -102,7 +157,7 @@ public class Questionnarie extends AppCompatActivity {
         A.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkOption();
+                checkOptionA();
                 index++;
                 question2();
             }
@@ -112,7 +167,7 @@ public class Questionnarie extends AppCompatActivity {
         B.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkOption();
+                checkOptionB();
                 index++;
                 question2();
             }
@@ -133,7 +188,7 @@ public class Questionnarie extends AppCompatActivity {
         A.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkOption();
+                checkOptionA();
                 index++;
                 question3();
             }
@@ -143,7 +198,7 @@ public class Questionnarie extends AppCompatActivity {
         B.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkOption();
+                checkOptionB();
                 index++;
                 question3();
             }
@@ -160,7 +215,7 @@ public class Questionnarie extends AppCompatActivity {
         A.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkOption();
+                checkOptionA();
                 index++;
                 question4();
             }
@@ -170,7 +225,7 @@ public class Questionnarie extends AppCompatActivity {
         B.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkOption();
+                checkOptionB();
                 index++;
                 question4();
             }
@@ -186,7 +241,7 @@ public class Questionnarie extends AppCompatActivity {
         A.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkOption();
+                checkOptionA();
                 index++;
                 question5();
             }
@@ -196,7 +251,7 @@ public class Questionnarie extends AppCompatActivity {
         B.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkOption();
+                checkOptionB();
                 index++;
                 question5();
             }
@@ -211,7 +266,7 @@ public class Questionnarie extends AppCompatActivity {
         A.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkOption();
+                checkOptionA();
                 index++;
                 question6();
             }
@@ -221,7 +276,7 @@ public class Questionnarie extends AppCompatActivity {
         B.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkOption();
+                checkOptionB();
                 index++;
                 question6();
             }
@@ -236,7 +291,7 @@ public class Questionnarie extends AppCompatActivity {
         A.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkOption();
+                checkOptionA();
                 index++;
                 question7();
             }
@@ -246,7 +301,7 @@ public class Questionnarie extends AppCompatActivity {
         B.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkOption();
+                checkOptionB();
                 index++;
                 question7();
             }
@@ -261,7 +316,7 @@ public class Questionnarie extends AppCompatActivity {
         A.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkOption();
+                checkOptionA();
                 index++;
                 question8();
             }
@@ -271,7 +326,7 @@ public class Questionnarie extends AppCompatActivity {
         B.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkOption();
+                checkOptionB();
                 index++;
                 question8();
             }
@@ -286,7 +341,7 @@ public class Questionnarie extends AppCompatActivity {
         A.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkOption();
+                checkOptionA();
                 index++;
                 question9();
             }
@@ -296,7 +351,7 @@ public class Questionnarie extends AppCompatActivity {
         B.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkOption();
+                checkOptionB();
                 index++;
                 question9();
             }
@@ -311,7 +366,7 @@ public class Questionnarie extends AppCompatActivity {
         A.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkOption();
+                checkOptionA();
                 index++;
                 question10();
             }
@@ -321,7 +376,7 @@ public class Questionnarie extends AppCompatActivity {
         B.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkOption();
+                checkOptionB();
                 index++;
                 question10();
             }
@@ -336,7 +391,7 @@ public class Questionnarie extends AppCompatActivity {
         A.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkOption();
+                checkOptionA();
                 index++;
                 question11();
             }
@@ -346,7 +401,7 @@ public class Questionnarie extends AppCompatActivity {
         B.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkOption();
+                checkOptionB();
                 index++;
                 question11();
             }
@@ -361,7 +416,7 @@ public class Questionnarie extends AppCompatActivity {
         A.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkOption();
+                checkOptionA();
                 index++;
                 question12();
             }
@@ -371,7 +426,7 @@ public class Questionnarie extends AppCompatActivity {
         B.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkOption();
+                checkOptionB();
                 index++;
                 question12();
             }
@@ -386,7 +441,7 @@ public class Questionnarie extends AppCompatActivity {
         A.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkOption();
+                checkOptionA();
                 index++;
                 question13();
             }
@@ -396,7 +451,7 @@ public class Questionnarie extends AppCompatActivity {
         B.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkOption();
+                checkOptionB();
                 index++;
                 question13();
             }
@@ -411,7 +466,7 @@ public class Questionnarie extends AppCompatActivity {
         A.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkOption();
+                checkOptionA();
                 index++;
                 question14();
             }
@@ -421,7 +476,7 @@ public class Questionnarie extends AppCompatActivity {
         B.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkOption();
+                checkOptionB();
                 index++;
                 question14();
             }
@@ -436,7 +491,7 @@ public class Questionnarie extends AppCompatActivity {
         A.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkOption();
+                checkOptionA();
                 index++;
                 question15();
             }
@@ -446,7 +501,7 @@ public class Questionnarie extends AppCompatActivity {
         B.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkOption();
+                checkOptionB();
                 index++;
                 question15();
             }
@@ -461,7 +516,7 @@ public class Questionnarie extends AppCompatActivity {
         A.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkOption();
+                checkOptionA();
                 index++;
                 question16();
             }
@@ -471,7 +526,7 @@ public class Questionnarie extends AppCompatActivity {
         B.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkOption();
+                checkOptionB();
                 index++;
                 question16();
             }
@@ -486,7 +541,7 @@ public class Questionnarie extends AppCompatActivity {
         A.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkOption();
+                checkOptionA();
                 index++;
                 question17();
             }
@@ -496,7 +551,7 @@ public class Questionnarie extends AppCompatActivity {
         B.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkOption();
+                checkOptionB();
                 index++;
                 question17();
             }
@@ -511,7 +566,7 @@ public class Questionnarie extends AppCompatActivity {
         A.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkOption();
+                checkOptionA();
                 index++;
                 question18();
             }
@@ -521,7 +576,7 @@ public class Questionnarie extends AppCompatActivity {
         B.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkOption();
+                checkOptionB();
                 index++;
                 question18();
             }
@@ -536,7 +591,7 @@ public class Questionnarie extends AppCompatActivity {
         A.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkOption();
+                checkOptionA();
                 index++;
                 question19();
             }
@@ -546,7 +601,7 @@ public class Questionnarie extends AppCompatActivity {
         B.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkOption();
+                checkOptionB();
                 index++;
                 question19();
             }
@@ -562,7 +617,7 @@ public class Questionnarie extends AppCompatActivity {
         A.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkOption();
+                checkOptionA();
                 index++;
                 question20();
             }
@@ -572,7 +627,7 @@ public class Questionnarie extends AppCompatActivity {
         B.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkOption();
+                checkOptionB();
                 index++;
                 question20();
             }
@@ -588,7 +643,7 @@ public class Questionnarie extends AppCompatActivity {
         A.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkOption();
+                checkOptionA();
                 index++;
                 result();
             }
@@ -598,7 +653,7 @@ public class Questionnarie extends AppCompatActivity {
         B.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkOption();
+                checkOptionB();
                 index++;
                 result();
             }
@@ -635,7 +690,20 @@ public class Questionnarie extends AppCompatActivity {
         }
 
         Log.i("I/info","My testing result is: " + result);
-        startActivity(new Intent(Questionnarie.this, Switch.class));
+        // set start
+        goButton.setText("Your type is: " + result);
+        goButton.setVisibility(View.VISIBLE);
+        // Set a timer for user to check the result
+        new CountDownTimer(5000,1000){
+            public void onTick(long millisecondUntilDone){
+                Log.i("Seconds Left!", String.valueOf(millisecondUntilDone/1000));
+            }
+
+            public void onFinish(){
+                Log.i("Info","Terminated!");
+            }
+        }.start();
+        startActivity(new Intent(Questionnarie.this, Chatting.class));
     }
 
     public void init(){

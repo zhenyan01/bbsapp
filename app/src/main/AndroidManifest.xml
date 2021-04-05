@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.bbsapp">
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -45,6 +46,8 @@
         <activity android:name=".activity.CreateCommunity" />
         <activity android:name=".activity.CreatePost" />
         <activity android:name=".activity.CreateReply" />
+        <activity android:name=".activity.Chatting" />
+        <activity android:name=".activity.ChannelActivity" />
 
 
     </application>

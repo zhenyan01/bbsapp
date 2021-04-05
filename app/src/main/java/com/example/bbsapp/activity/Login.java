@@ -49,6 +49,7 @@ public class Login extends AppCompatActivity {
                             Log.i("I/info","Before start?");
                             startActivity(new Intent(Login.this, Switch.class));
                         }else{
+                            Log.i("I/info","reason: " +e.toString());
                             Toast.makeText(Login.this, "Login failed", Toast.LENGTH_SHORT).show();
                         }
                     }

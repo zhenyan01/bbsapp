@@ -28,7 +28,9 @@ public class Switch extends AppCompatActivity {
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Log.i("Todo", "right response!");
+                startActivity(new Intent(Switch.this, Chatting.class));
             }
         });
         //
