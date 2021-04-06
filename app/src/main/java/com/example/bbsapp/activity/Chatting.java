@@ -27,18 +27,16 @@ public final class Chatting extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Step 0 - inflate binding
+
         ActivityChattingBinding binding = ActivityChattingBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        // Step 1 - Set up the client for API calls, the domain for offline storage
-        //          and the UI components
-        // 4/5
-        ChatClient client = new ChatClient.Builder("jvqcjmfy2rta", getApplicationContext()).build();
+
+        ChatClient client = new ChatClient.Builder("b67pax5b2wdq", getApplicationContext()).build();
         new ChatDomain.Builder(client, getApplicationContext()).build();
         new ChatUI.Builder(getApplicationContext()).build();
 
-        // Step 2 - Authenticate and connect the user
+
         User user = new User();
         user.setId("tutorial-droid");
         user.getExtraData().put("name", "Android User");
@@ -46,12 +44,9 @@ public final class Chatting extends AppCompatActivity {
 
         client.connectUser(
                 user,
-                "jczg2uu3h595k5vjqsfxp96sx434m3svfm5frbpcxh5u6c36asz4sn9rucbva52v"
+                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidHV0b3JpYWwtZHJvaWQifQ.NhEr0hP9W9nwqV7ZkdShxvi02C5PR7SJE7Cs4y7kyqg"
         ).enqueue();
 
-        // Step 3 - Set the channel list filter and order
-        // This can be read as requiring only channels whose "type" is "messaging" AND
-        // whose "members" include our "user.id"
         FilterObject filter = Filters.and(
                 Filters.eq("type", "messaging"),
                 Filters.in("members", singletonList(user.getId()))
@@ -64,9 +59,7 @@ public final class Chatting extends AppCompatActivity {
 
         ChannelListViewModel channelsViewModel =
                 new ViewModelProvider(this, factory).get(ChannelListViewModel.class);
-
-        // Step 4 - Connect the ChannelListViewModel to the ChannelListView, loose
-        //          coupling makes it easy to customize
+        
         ChannelListViewModelBinding.bind(channelsViewModel, binding.channelListView, this);
         binding.channelListView.setChannelItemClickListener(channel -> {
             //start channel activity
