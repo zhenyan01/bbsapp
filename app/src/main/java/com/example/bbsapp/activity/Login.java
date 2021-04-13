@@ -97,4 +97,8 @@ public class Login extends AppCompatActivity {
         super.onDestroy();
         Log.i(Tag,"onDestroy triggered");
     }
+    // designed for LoginTest
+    protected EditText getUsername(){
+        return this.username;
+    }
 }
