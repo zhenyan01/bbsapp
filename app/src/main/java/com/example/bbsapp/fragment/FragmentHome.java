@@ -49,7 +49,7 @@ public class FragmentHome extends Fragment {
 
         initView();
 
-        Bmob.initialize(getActivity(), "491577816863ab34446202c63e40ad0a");
+        //Bmob.initialize(getActivity(), "491577816863ab34446202c63e40ad0a");
 
         //refresh();
 

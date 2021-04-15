@@ -121,7 +121,6 @@
             android:layout_height="1dp"
             android:background="#c9c9c9" />
 
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -135,7 +134,7 @@
                 android:layout_toRightOf="@id/fp_my_collection_icon"
                 android:layout_marginTop="15dp"
                 android:textSize="20sp"
-                android:text="My Community"
+                android:text="My Collection"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <ImageView
@@ -160,7 +159,15 @@
 
     <Button
         android:layout_margin="10dp"
+        android:id="@+id/fp_change_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Change Password"/>
+
+    <Button
+        android:layout_margin="10dp"
         android:id="@+id/logout"
+        android:backgroundTint="#FF0000"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Logout"/>

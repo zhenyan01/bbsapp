@@ -48,6 +48,7 @@
         <activity android:name=".activity.CreateReply" />
         <activity android:name=".activity.Chatting" />
         <activity android:name=".activity.ChannelActivity" />
+        <activity android:name=".activity.ChangePassword"/>
 
 
     </application>

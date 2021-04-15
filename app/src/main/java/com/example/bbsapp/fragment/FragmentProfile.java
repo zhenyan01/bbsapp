@@ -16,6 +16,8 @@ import androidx.fragment.app.Fragment;
 
 import com.example.bbsapp.Bean.User;
 import com.example.bbsapp.R;
+import com.example.bbsapp.activity.ChangePassword;
+import com.example.bbsapp.activity.CreatePost;
 import com.example.bbsapp.activity.Login;
 
 import cn.bmob.v3.BmobQuery;
@@ -25,7 +27,7 @@ import cn.bmob.v3.listener.QueryListener;
 public class FragmentProfile extends Fragment {
 
     private TextView nickname;
-    private Button logout;
+    private Button logout, changePassword;
 
     @Nullable
     @Override
@@ -45,6 +47,14 @@ public class FragmentProfile extends Fragment {
             public void onClick(View v) {
                 User.logOut();
                 startActivity(new Intent(getActivity(), Login.class));
+                getActivity().finish();
+            }
+        });
+
+        changePassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), ChangePassword.class));
                 getActivity().finish();
             }
         });
@@ -69,5 +79,6 @@ public class FragmentProfile extends Fragment {
     private void initView() {
         nickname = getActivity().findViewById(R.id.fp_nickname);
         logout = getActivity().findViewById(R.id.logout);
+        changePassword = getActivity().findViewById(R.id.fp_change_password);
     }
 }
